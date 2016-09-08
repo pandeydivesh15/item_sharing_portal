@@ -1,5 +1,9 @@
 body{
 	padding-top: 230px;
+	background-color: #FFA59C
+}
+a:link{
+	color:#fff;
 }
 .navbar .main_image{
 	background: url("../images/IIT_BHU.jpg") no-repeat;
@@ -31,4 +35,28 @@ body{
 }
 .navbar .container-fluid{
 	background-color: #931A1A
+}
+.container-fluid .row .panel .panel-body{
+	text-align: left;
+}
+.container-fluid .row .panel-default .panel-heading{
+	text-align: center;
+	background-color: #931A1A;
+	color: #fff;
+}
+.container-fluid .row{
+	margin-top: 50px;
+	margin-bottom: 50px;
+}
+.recentPosts {
+	margin-top: 5px;
+}
+#recentPosts-heading{
+	background-color: #FF4040;
+	text-align: left;
+}
+.footer{
+	color: #fff;
+	margin-bottom: 0px;
+	background-color: #931A1A;
 }
