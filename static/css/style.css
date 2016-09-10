@@ -49,7 +49,7 @@ a:link{
 	margin-bottom: 50px;
 }
 .recentPosts {
-	margin-top: 5px;
+	margin-top: 10px;
 }
 #recentPosts-heading{
 	background-color: #FF4040;
@@ -57,6 +57,32 @@ a:link{
 }
 .footer{
 	color: #fff;
+	margin-top: 30px;
 	margin-bottom: 0px;
 	background-color: #931A1A;
+}
+
+/* signup Form */
+.siteForm > h2{
+	text-align: center;
+	font-weight: bold;
+	padding-bottom: 20px;
+
+}
+.FormElement:hover{
+	background-color: #E3DEDE;
+}
+.siteForm .buttonAlign >button{
+	text-align: center;
+	background-color: #931A1A;
+}
+
+.form-group .panel{
+	text-align: center;
+
+}
+.form-group .panel .panel-body{
+	align-self: center;
+	
+
 }
