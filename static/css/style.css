@@ -1,13 +1,16 @@
 body{
 	padding-top: 0px;
-	background-color: #FFA59C
+	background: url("../images/background.gif") repeat;
 }
 a:link{
 	color:#fff;
 }
+.panel{
+	background-color: #D8FBFF;
+}
+
 .navbar .main_image{
-	background: url("../images/IIT_BHU.jpg") no-repeat;
-    background-size: 100% 100%;
+	background: url("../images/headingBack.jpg") repeat;
     padding-top: 175px;    
 }
 
@@ -34,14 +37,14 @@ a:link{
     
 }
 .navbar .container-fluid{
-	background-color: #931A1A
+	background: url("../images/textHeaderBack.jpg") repeat;;
 }
 .container-fluid .row .panel .panel-body{
 	text-align: left;
 }
 .container-fluid .row .panel-default .panel-heading{
 	text-align: center;
-	background-color: #931A1A;
+	background: url("../images/textHeaderBack.jpg") repeat;;
 	color: #fff;
 }
 .container-fluid .row{
@@ -59,7 +62,7 @@ a:link{
 	color: #fff;
 	margin-top: 30px;
 	margin-bottom: 0px;
-	background-color: #931A1A;
+	background: url("../images/textHeaderBack.jpg") repeat;
 }
 
 /* signup Form */
@@ -70,11 +73,11 @@ a:link{
 
 }
 .FormElement:hover{
-	background-color: #E3DEDE;
+	background-color: #D5EEFA; 
 }
 .siteForm .buttonAlign >button{
 	text-align: center;
-	background-color: #931A1A;
+	background: url("../images/textHeaderBack.jpg") repeat;
 }
 
 .form-group .panel{
@@ -86,3 +89,12 @@ a:link{
 	
 
 }
+.thumbnail{
+	background: url("../images/postBack.jpg") no-repeat;
+	background-size: 100% 100%;
+}
+@media (max-width: 500px){
+	.navbar .main_image .heading{
+		font-size: 15px;
+	}
+} 
