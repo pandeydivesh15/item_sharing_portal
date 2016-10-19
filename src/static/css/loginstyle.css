@@ -1,0 +1,67 @@
+ 
+.body{     }
+
+
+.heading{font-size:250%}
+
+.image{max-width:100px; max-height:100px}
+
+
+.box{max-width:500px; max-height:10000px;float:center;background:white;border:1px solid #c0c0c0;margin:0 2px;padding:0.35em 0.625em 0.75em}
+.signup{max-width:500px; max-height:10000px;float:center;background:white;border:1px solid #c0c0c0;margin:0 2px;padding:0.35em 0.625em 0.75em}
+.signuplink{color:blue}
+
+
+label {font-size:150%; text-align:left;float:left; padding-left:45px}
+
+
+
+.inputtext{
+	width:80%;
+	min-height:48px;
+	padding:6px 8px;
+	font-size:14px;
+	line-height:20px;
+	color:#333;
+	vertical-align:middle;
+	background-color:#fff;
+	background-repeat:no-repeat;
+	background-position:right 8px center;
+	border:1px solid #ddd;
+	border-radius:3px;
+	outline:none;
+	box-shadow:inset 0 1px 2px rgba(0,0,0,0.075)
+}
+
+.inputtext:focus { border: 2px solid Turquoise  }
+.submit:onmouseover{border: 2px solid Turquoise}
+.submit{width:80%;min-height:48px;
+	cursor:pointer;
+	padding:6px 8px;
+	font-size:18px;
+	font-style:bold;
+	line-height:20px;
+	color:white;
+	vertical-align:middle;
+	background-color:LimeGreen ;
+	background-repeat:no-repeat;
+	background-position:right 8px center;
+	border:1px solid #ddd;
+	border-radius:3px;
+	outline:none;
+	box-shadow:inset 0 1px 2px rgba(0,0,0,0.075)
+	}
+	
+
+
+ 
+ 
+ .submit{
+  opacity: 1.0;
+ }
+ .submit:hover{
+  cursor:pointer;
+  opacity: 0.75;
+ } 	
+ 
+	
