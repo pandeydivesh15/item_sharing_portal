@@ -20,7 +20,9 @@ from django.contrib import admin
 
 urlpatterns = [
 	url(r'^',  include("home.urls", namespace="home")),
-    url(r'^',  include("User.urls", namespace="User")),
+    url(r'^',  include("User.urls", namespace="user")),
+    url(r'^chat/',  include("chat_start.urls", namespace="chat")),
+
     url(r'^admin/', admin.site.urls),
     #url(r'^posts/', include("posts.urls", namespace="posts")),
 ]

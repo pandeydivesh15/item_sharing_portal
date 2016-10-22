@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block navbar %}
+		{% include "navbar_after_login.html" %}
+{% endblock navbar %}
+
+{% block content %}
+	{% if other_user %}
+		<h2>{{ other_user.name }} is online.</h2>
+	{% else %}
+		<h2>{{ other_user.name }} seems offline. But you may send messages</h2>
+	{% endif %}
+	<div class="col-md-6 col-md-offset-3">
+		{% for chat in chatmessage_list %}
+        {% if user.name == chat.chat_sender %}
+			<p style="color:blue;text-align: right;">			            
+		{% else %}
+			<p style="color:red;text-align: left;">
+		{% endif %}
+		<span>{{ chat.chat_sender }}:</span>{{ chat.message }}
+			            <br><span>{{ chat.timestamp|timesince }} ago</span>
+			</p> 
+    	{% endfor %}
+	    <form role="form" action="{{ other_user.auto_id }}/send/" method="post">{% csrf_token %}
+	    	<div class="form-group">
+				<input class="form-control FormElement" type="text" name="chat_msg" placeholder="Enter your message here">
+			</div>
+	    	<button type="submit"></button>
+	    </form>
+	</div>
+
+{% endblock content %}

@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
 from django.contrib import messages
 # Create your views here.
@@ -11,7 +11,7 @@ def check_login(request):
 	temp_pwd = request.POST.get("password")
 	contextData={}
 	if temp_pwd and temp_id:
-		ans = User.objects.raw('SELECT user_id, user_pwd FROM User_user')
+		ans = User.objects.raw('SELECT user_id, user_pwd, auto_id FROM User_user')
 		for person in ans:
 			if person.user_id == temp_id:
 				if person.user_pwd == temp_pwd:
@@ -50,7 +50,7 @@ def signup_user(request):
 			#ans = User.objects.raw(sql)
 			messages.success(request, "Sign up was successful")
 			messages.success(request, "Now you may login")
-			return redirect("User:login")
+			return redirect("user:login")
 	except Exception,error:
 		messages.error(request, "Some Internal Error. May be this mail id is already registered.")
 	return render(request, "signup.html")
@@ -63,3 +63,21 @@ def logout_user(request):
 		messages.error(request,"Cant logout without any login")
 		return redirect("home:welcome")
 
+def user_profile(request,id=None):
+	check = check_if_auth_user(request);
+	if not check:
+		return redirect("home:welcome")
+
+	current_user = User.objects.filter(user_id = check)[0]
+	other_user = get_object_or_404(User, auto_id = id)
+
+	if current_user == other_user:
+		contextData = {
+			"user" : current_user,
+		}
+	else:
+		contextData = {
+		"user" : current_user,
+		"chat_link_user" : other_user, 
+		}
+	return render(request, "profile.html", contextData)

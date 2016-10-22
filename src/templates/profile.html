@@ -1,0 +1,532 @@
+{% extends "base.html" %}
+
+{% block add_static %}
+	{{ block.super }}
+	<link href="../static/css/profileStyle.css" rel="stylesheet" type="text/css">
+	<script src="../static/js/profileFunc.js"></script>
+
+{% endblock add_static %}
+
+{% block navbar %}
+	{% if user %}
+		{% include "navbar_after_login.html" %}
+	{% else %}
+		{% include "navbar_before_login.html" %}
+	{% endif %}
+
+{% endblock navbar %}
+
+{% block content %}
+
+{% if chat_link_user %}
+	<a href="{{ chat_link_user.get_chat_URL }}"><button class="btn btn-primary btn-lg btn-block">Submit</button></a>
+{% endif %}
+<div class="container">
+<div class="row">
+<div class="col-md-12">
+	
+		<center><h class="heading"> Profile</h></center>
+		<br>
+		<br>
+</div>
+</div>
+<div class="row">
+ <div class="col-md-2">
+ <!-- this column will hold the login form -->
+ </div>	
+ <div class="col-md-8"> 
+		
+		<fieldset>
+			<legend> Basic Information</legend>
+			
+			
+			
+			<form>
+			
+			<div class="row">
+			
+			
+			<div class="col-md-4">
+				<td><img height="200px" width="150px" src="../static/images/student_pic.jpg"></img></td>
+				
+				
+			</div>
+			<div class="col-md-1">
+			</div>
+			<div class="col-md-2">
+				<form>
+				&emsp;&emsp;&emsp;&emsp;<input onclick="change()" type="button" name="connect" value="Connect" id="connect" class="btn btn-default">
+			</div>	
+			<div class="col-md-1">
+			</div>
+			<div class="col-md-2">
+				&emsp;&emsp;&emsp;&emsp;<input onclick="change2()" type="button" name="message" value="Send message" id="message" class="btn btn-default">
+				</form>
+				
+			</div>	
+			<div class="col-md-2">
+			
+			
+			</div>
+			</div>
+			
+			<br>
+			<br>
+			
+			<div class="row">
+			
+			
+			<div class="form-group">
+			<div class="col-md-2">
+			
+				
+					<label for="name">Name:</label>
+				
+			</div>
+			
+			<div class="col-md-6">
+			
+				
+				
+				<input type="text" name="name" value=" Ram Sharma" class="form-control" id="exampleInputText1" readonly>
+				
+			</div>	
+			</div>	
+			<div class="col-md-4">
+			
+			
+			</div>
+			</div>
+			<br>
+			<br>
+			
+			<div class="row">
+			<div class="form-group">
+			<div class="col-md-2">
+			
+			<label for="Department">Department:</label>
+			
+			</div>
+			<div class="col-md-6">
+			
+			<input type="text" name="Department" value=" Computer Science and Engineering" class="form-control" id="exampleInputText1" readonly >
+			
+			</div>
+			</div>
+			<div class="col-md-4">
+			
+			
+			</div>
+			</div>
+			
+			<br>
+			<br>
+			
+			<div class="row">
+			<div class="form-group">
+			<div class="col-md-2">
+			
+			<label for="batch">Batch:</label>
+			
+			</div>
+			<div class="col-md-6">
+			
+			<input type="text" name="batch" value=" 2015" class="form-control" id="exampleInputText1" readonly>
+			
+			</div>
+			</div>
+			<div class="col-md-4">
+			</div>
+			
+			</div>
+			
+			<br>
+			<br>
+			
+			<div class="row">
+			<div class="form-group">
+			<div class="col-md-2">
+			
+			<label for="address">Address:</label>
+			
+			</div>
+			<div class="col-md-6">
+			
+			<input type="text" name="address" value=" 515B, Aryabhatta Hostel, IIT-BHU, Varanasi, U.P." class="form-control" id="exampleInputText1" readonly>
+			
+			</div>
+			</div>
+			<div class="col-md-4">
+			</div>
+			
+			</div>
+			
+			<br>
+			<br>
+			
+			<div class="row">
+			<div class="form-group">
+			<div class="col-md-2">
+			
+			<label for="mobile">Mobile:</label>
+			
+			</div>
+			<div class="col-md-6">
+			
+			<input type="text" name="mobile" value=" +919898257543" class="form-control" id="exampleInputText1" readonly>
+			
+			</div>
+			</div>
+			<div class="col-md-4">
+			</div>
+			
+			</div>
+			
+			<br>
+			<br>
+			
+			<div class="row">
+			<div class="form-group">
+			<div class="col-md-2">
+			
+			<label for="email">Email</label>
+			
+			</div>
+			<div class="col-md-6">
+			
+			<input type="email" name="email"  class="form-control" id="exampleInputEmail1" value=" ram.sharma.cse15@iitbhu.ac.in" readonly>
+			
+			</div>
+			</div>
+			<div class="col-md-4">
+			</div>
+			
+			</div>
+			
+			<br>
+			<br>		
+			</form>
+			
+		</fieldset>
+</div>
+<div class="col-md-2">
+ <!-- this column will hold the login form -->
+ </div>
+</div> 
+		
+		<br>
+		<br>
+<div class="row">
+ <div class="col-md-2">
+ <!-- this column will hold the login form -->
+ </div>
+ <div class="col-md-8">
+		<fieldset>
+			<legend>Collections</legend>
+			<form>
+			
+			
+				<h class="sections"> Book Section:</h>
+				
+					<div class="row">
+						<div class="col-md-3">
+							<p>Book</p>
+						
+						</div>
+						<div class="col-md-3">
+						
+							<p>Author</p>
+						
+						</div>
+						<div class="col-md-3">
+						
+							<p>Publication</p>
+						
+						</div>
+						<div class="col-md-3">
+						
+							<p>Subject</p>
+						
+						</div>
+					
+					</div>
+					
+					<div class="row">
+						<div class="form-group">
+						<div class="col-md-3">
+						
+						
+							<input  type="text" name="book" value=" Probability and Statistics" class="form-control" id="exampleInputText1" readonly >
+							
+						</div>
+						</div>
+						<div class="form-group">
+						<div class="col-md-3">
+						
+							<input  type="text" name="book" value=" Walpole Myers" class="form-control" id="exampleInputText1" readonly >
+							
+						</div>
+						</div>
+						<div class="form-group">
+						<div class="col-md-3">
+						
+							<input  type="text" name="book" value=" Pearson education" class="form-control" id="exampleInputText1" readonly >
+							
+						</div>
+						</div>
+						<div class="form-group">
+						<div class="col-md-3">
+						
+							<input  type="text" name="book" value=" Mathematics" class="form-control" id="exampleInputText1" readonly >
+							
+						</div>
+						</div>
+						
+					
+					</div>					
+					
+					<br>
+					<br>
+					
+					<div class="row">
+						<div class="form-group">
+						<div class="col-md-3">
+						
+							<input  type="text" name="book" value=" Let us c"  class="form-control" id="exampleInputText1"readonly >
+						</div>	
+						
+						</div>
+						<div class="form-group">
+						<div class="col-md-3">
+						
+							<input  type="text" name="book" value=" Yashvant kanetkar" class="form-control" id="exampleInputText1" readonly >
+						</div>	
+						
+						</div>
+						<div class="form-group">
+						<div class="col-md-3">
+						
+							<input  type="text" name="book" value=" BPB Publication" class="form-control" id="exampleInputText1" readonly >
+						</div>	
+						
+						</div>
+						<div class="form-group">
+						<div class="col-md-3">
+						
+							<input  type="text" name="book" value="Computer science" class="form-control" id="exampleInputText1" readonly >
+						</div>	
+						
+						</div>
+						
+					
+					</div>
+					
+					<br>
+					<br>
+					
+					<div class="row">
+						<div class="form-group">
+						<div class="col-md-3">
+						
+							<input  type="text" name="book" value=" Engineering Mechanics" class="form-control" id="exampleInputText1" readonly >
+						</div>	
+						
+						</div>
+						<div class="form-group">
+						<div class="col-md-3">
+						
+							<input  type="text" name="book" value=" H. Shames" class="form-control" id="exampleInputText1" readonly >
+							
+						</div>
+						</div>
+						<div class="form-group">
+						<div class="col-md-3">
+						
+							<input  type="text" name="book" value=" Prentice Hall" class="form-control" id="exampleInputText1" readonly >
+						</div>	
+						
+						</div>
+						<div class="form-group">
+						<div class="col-md-3">
+						
+							<input  type="text" name="book" value=" Mechanics" class="form-control" id="exampleInputText1" readonly >
+						</div>	
+						
+						</div>
+					
+					</div>
+					
+					<br>
+					<br>
+					
+					<div class="row">
+						<div class="form-group">
+						<div class="col-md-3">	
+						
+							<input  type="text" name="book" value=" Discrete math" class="form-control" id="exampleInputText1" readonly >
+							
+						</div>
+						</div>
+						<div  class="form-group">
+						<div class="col-md-3">
+						
+							<input  type="text" name="book" value=" J.P. Tremblay" class="form-control" id="exampleInputText1" readonly >
+							
+						</div>
+						</div>
+						<div class="form-group">
+						<div class="col-md-3">
+						
+							<input  type="text" name="book" value=" Mcgraw-Hill" class="form-control" id="exampleInputText1" readonly >
+						</div>	
+						
+						</div>
+						<div class="form-group">
+						<div class="col-md-3">
+						
+							<input  type="text" name="book" value=" Mathematics" class="form-control" id="exampleInputText1" readonly >
+						</div>	
+						
+						</div>
+					
+					</div>
+					<br>
+					<br>					
+			
+			</form>
+			<br>
+			<br>
+			<form>
+			
+				<h class="sections"> Calculator Section:</h>
+				<div class="row">
+					<div class="form-group">
+					<div class="col-md-2">
+					
+						<label for="calculator">Calculator:</label>
+					
+					</div>
+					<div class="col-md-6">
+					
+						<input  type="text" name="calculator" value=" Yes" class="form-control" id="exampleInputText1" readonly >
+					</div>
+					</div>
+					<div class="col-md-4">
+					</div>					
+				
+				</div>
+				
+				<br>
+				<br>
+				
+				<div class="row">
+					<div class="form-group">
+					<div class="col-md-2">
+					
+						<label for="calculator_type">Type:</label>
+					
+					</div>
+					<div class="col-md-6">
+					
+						<input  type="text" name="calculator_type" value=" fs-82MS" class="form-control" id="exampleInputText1" readonly >
+					
+					</div>	
+					</div>
+					<div class="col-md-4">
+					</div>	
+				
+				</div>
+				<br>
+				<br>
+			
+			</form>
+			
+			<br>
+			<br>
+			
+			<form>
+			
+				<h class="sections"> Apron Section:</h>
+				<div class="row">
+					<div class="form-group">
+					<div class="col-md-2">
+					
+						<label for="apron">Apron:</label>
+					
+					</div>
+					<div class="col-md-6">
+					
+						<input  type="text" name="apron" value=" Yes" class="form-control" id="exampleInputText1" readonly >
+										
+					</div>
+					</div>
+					<div class="col-md-4">
+					</div>
+				
+				</div>
+				
+				<br>
+				<br>
+				
+				<div class="row">
+					<div class="form-group">
+					<div class="col-md-2">
+					
+						<label for="apron_size">Size:</label>
+					
+					</div>
+					<div class="col-md-6">
+					
+						<input  type="text" name="apron_size" value=" M" class="form-control" id="exampleInputText1" readonly >
+										
+					</div>
+					</div>
+					<div class="col-md-4">
+					</div>
+				
+				</div>
+				
+				<br>
+				<br>			
+			
+			</form>
+			
+			<br>
+			<br>
+			
+			
+			<form>
+				
+				<div class="row">
+						<div class="col-md-4">
+						</div>
+						
+						
+						<div class="col-md-4">
+						
+							<a href="index.html" class="btn btn-default" id="button"  role="button">Home</a>
+						
+						</div>
+						<div class="col-md-4">
+						</div>
+					
+					</div>
+					<br>
+					<br>
+					
+				
+			</form>
+			
+			
+			
+		</fieldset>
+</div>
+ <div class="col-md-2">
+ <!-- this column will hold the login form -->
+ </div>
+ </div>
+</div>
+</div>	
+<hr>
+</div>	
+{% endblock content %}
