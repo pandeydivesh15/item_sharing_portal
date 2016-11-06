@@ -22,7 +22,11 @@ urlpatterns = [
 	url(r'^',  include("home.urls", namespace="home")),
     url(r'^',  include("User.urls", namespace="user")),
     url(r'^chat/',  include("chat_start.urls", namespace="chat")),
+    url(r'^posts/',  include("post.urls", namespace="post")),
 
     url(r'^admin/', admin.site.urls),
-    #url(r'^posts/', include("posts.urls", namespace="posts")),
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

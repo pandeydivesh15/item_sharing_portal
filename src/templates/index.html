@@ -29,7 +29,7 @@
 	{% if user %}
 		<div class="row">
 		<div class="col-lg-12" align="center">
-			<a href="createPost.html">
+			<a href="./posts/create">
 			<button class="btn btn-primary btn-lg"> Want to sell something? Click here. </button></a>
 		</div>
 		</div>
@@ -58,63 +58,19 @@
 			<div class="panel-heading">RECENT POSTS</div>
 			<div class="panel-body">
 				<div class="row">
-					  <div class="col-md-6">
-					    <div class="thumbnail">
-					      <img src="../static/images/image2.jpg" alt="No image uploaded">
-					      <div class="caption">
-					        <h3 align="center">atdelectus ducimus necessitatib</h3>
-					        <p align="justify">LLorem ipsum dolor Consequatdelectus ducimus necessitatibus reiciendis optioMetrro and Barcllay have recently orem ipsum dolor Consequatdelectus ducimus necessitatibus reiciendis optioMetrro and Barcllay have recently orem ipsum dolor...</p>
-					        <p align="center"><a href="#" class="btn btn-primary" role="button">View Post</a></p>
-					      </div>
-					    </div>
-					  </div>
-				
-					  <div class="col-md-6">
-					    <div class="thumbnail">
-					      <img src="../static/images/image1.jpg" alt="No image uploaded">
-					      <div class="caption">
-					        <h3 align="center">atdelectus ducimus necessitatib</h3>
-					        <p align="justify">LLorem ipsum dolor Consequatdelectus ducimus necessitatibus reiciendis optioMetrro and Barcllay have recently orem ipsum dolor Consequatdelectus ducimus necessitatibus reiciendis optioMetrro and Barcllay have recently orem ipsum dolor...</p>
-					        <p align="center"><a href="#" class="btn btn-primary" role="button">View Post</a></p>
-					      </div>
-					    </div>
-					  </div>
-				</div>
-				<div class="row">
-					  <div class="col-md-6">
-					    <div class="thumbnail">
-					      <img src="../static/images/image1.jpg" alt="No image uploaded">
-					      <div class="caption">
-					        <h3 align="center">atdelectus ducimus necessitatib</h3>
-					        <p align="justify">LLorem ipsum dolor Consequatdelectus ducimus necessitatibus reiciendis optioMetrro and Barcllay have recently orem ipsum dolor Consequatdelectus ducimus necessitatibus reiciendis optioMetrro and Barcllay have recently orem ipsum dolor...</p>
-					        <p align="center"><a href="#" class="btn btn-primary" role="button">View Post</a></p>
-					      </div>
-					    </div>
-					  </div>
-				
-					  <div class="col-md-6">
-					    <div class="thumbnail">
-					      <img src="../static/images/image1.jpg" alt="No image uploaded">
-					      <div class="caption">
-					        <h3 align="center">atdelectus ducimus necessitatib</h3>
-					        <p align="justify">LLorem ipsum dolor Consequatdelectus ducimus necessitatibus reiciy orem ipsum dolor Consequatdelectus ducimus necessitatibus reiciendis optioMetrro and Barcllay have recently orem ipsum dolor Consequatdel...</p>
-					        <p align="center"><a href="#" class="btn btn-primary" role="button">View Post</a></p>
-					      </div>
-					    </div>
-					  </div>
-				</div>	
-				<div class="row">
-					  <div class="col-md-6">
-					    <div class="thumbnail">
-					      <img src="../static/images/image1.jpg" alt="No image uploaded">
-					      <div class="caption">
-					        <h3 align="center">atdelectus ducimus necessitatib</h3>
-					        <p align="justify">LLorem ipsum dolor Consequatdelectus ducimus necessitatibus reiciendis optioMetrro and Barcllay have recently orem ipsum dolor Consequatdelectus ducimus necessitatibus reiciendis optioMetrro and Barcllay have recently orem ipsum dolor...</p>
-					        <p align="center"><a href="#" class="btn btn-primary" role="button">View Post</a></p>
-					      </div>
-					    </div>
-					  </div>
-				</div>	
+				{% for obj in all_posts %}
+					<div class="col-md-6">
+						    <div class="thumbnail">
+						      <img src="{{ obj.image.url }}" alt="No image uploaded">
+						      <div class="caption">
+						        <h3 align="center">{{ obj.title }}</h3>
+						        <h4 align="center"><a href="{{ obj.author.get_absolute_url }}">{{ obj.author }}</a> | {{ obj.timestamp|timesince }} ago</h4>
+						        <p align="center"><a href="{{ obj.getAbsoluteURL }}" class="btn btn-primary" role="button">View Post</a></p>
+						      </div>
+						    </div>
+					</div>
+					{% cycle "" "</div><div class='row'>" %}
+				{% endfor %}		
 			</div>
 		</div>
 	</div>

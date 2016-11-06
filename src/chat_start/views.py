@@ -37,8 +37,7 @@ def begin_chat(request, id = None):
 		return redirect("home:welcome")
 	current_user = User.objects.filter(user_id = check)[0]
 	other_user = get_object_or_404(User, auto_id = id)
-	print type(current_user)
-	print type(other_user)
+	
 	sql = """SELECT * FROM chat_start_chat
 			 WHERE chat_sender='{0}' and chat_reciever='{1}'
 			 OR chat_sender='{1}' and chat_reciever='{0}';"""

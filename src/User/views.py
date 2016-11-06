@@ -6,6 +6,7 @@ from .models import User, start_user_session, check_if_auth_user, stop_user_sess
 
 def check_login(request):
 	if check_if_auth_user(request):
+		messages.error(request, "Log out to perform Log in")
 		return redirect("home:welcome")
 	temp_id = request.POST.get("username")
 	temp_pwd = request.POST.get("password")
@@ -29,6 +30,7 @@ def check_login(request):
 
 def signup_user(request):
 	if check_if_auth_user(request):
+		messages.error(request, "Log out to perform sign up")
 		return redirect("home:welcome")
 	name = request.POST.get('userName')
 	email = request.POST.get('userEmail')
@@ -66,6 +68,7 @@ def logout_user(request):
 def user_profile(request,id=None):
 	check = check_if_auth_user(request);
 	if not check:
+		messages.success(request,"Perform Login first")
 		return redirect("home:welcome")
 
 	current_user = User.objects.filter(user_id = check)[0]

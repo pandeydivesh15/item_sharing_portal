@@ -93,8 +93,13 @@ a:link{
 	background: url("../images/postBack.jpg") no-repeat;
 	background-size: 100% 100%;
 }
+.thumbnail img{
+	width: 400px;
+	height: 200px;	
+}
 @media (max-width: 500px){
 	.navbar .main_image .heading{
 		font-size: 15px;
 	}
 } 
+

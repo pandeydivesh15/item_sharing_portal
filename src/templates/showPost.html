@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block navbar %}
+	{% if user %}
+		{% include "navbar_after_login.html" %}
+	{% else %}
+		{% include "navbar_before_login.html" %}
+	{% endif %}
+{% endblock navbar %}
+{% block content %}
+<div class="col-sm-6 col-sm-offset-3">
+<h2>{{ post_obj.title }} <small>{{ post_obj.timestamp }}</small></h2><br>
+	{% if post_obj.image %}
+        <img src="{{ post_obj.image.url }}" class="img-responsive">
+    {% endif %}
+    {{ post_obj.author }}<br>
+	{{ post_obj.description }}<br>
+</div>
+{% endblock content %}
+	
+	

@@ -22,7 +22,8 @@ class User(models.Model):
 	def get_chat_URL(self):
 		return reverse("chat:chat_start", kwargs={ "id":self.auto_id})
 
-
+	def get_absolute_url(self):
+		return reverse("user:profile", kwargs={ "id":self.auto_id})
 
 	
 def start_user_session(request, user_id):

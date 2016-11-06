@@ -1,51 +1,20 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>EasyShare@IITBHU Portal</title>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
- 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
- 	<link rel="stylesheet" href="../static/css/style.css" type="text/css"/>
-</head>
-<body>
-	<nav class="navbar navbar-inverse">
-		<div class="main_image">
-			<div id="wrap">
-				<img class="image" src="../static/images/IITBHUlogo.png">
-			</div>
-			<p class="heading">Indian Institute of Technology (BHU), Varanasi</p>
-		</div>
-	    <div class="container-fluid">
-	    	<div class="navbar-header">
-	    		<a class="navbar-brand" href="#">EasyShare@IITBHU</a>
-	    		<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#cNav">
-	    			<span class="icon-bar"></span>
-	    			<span class="icon-bar"></span>
-	    			<span class="icon-bar"></span>
-	    		</button>
-	    	</div>
-	    	<div class="collapse navbar-collapse" id="cNav">
-	    	<ul class="nav navbar-nav navbar-right">
-	    	    <li><a href="signup/"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-	    	    <li><a href="login.html"><span class="glyphicon glyphicon-log-in"></span> Login</a></li></li>
-	    	    <li><a href="faq.html"><span class="glyphicon glyphicon-info-sign"></span>  
-	    	     FAQ</a></li>
-	    	    <li><a href="about.html"><span class="glyphicon glyphicon-tasks"></span> About Us</a></li>
-	    	</ul>
-	    	</div>
-	    </div>
-	</nav>
+{% extends "base.html" %}
 
+{% block navbar %}
+	{% if user %}
+		{% include "navbar_after_login.html" %}
+	{% else %}
+		{% include "navbar_before_login.html" %}
+	{% endif %}
+{% endblock navbar %}
+
+{% block content %}
 <div class="container siteForm">
-
 	<h2>Enter details of your new Post!</h2>
 	<div class="row">
 		<div class="col-lg-2"></div>
 		<div class="col-lg-8">
-			<form role="form" action="" method="get">
+			<form role="form" action="" method="post" enctype="multipart/form-data">{% csrf_token %}
 				<div class="form-group">
 					<input class="form-control FormElement" type="text" name="item_title" required="True" placeholder="What is this post about or What do you wish to sell?">
 				</div>
@@ -80,29 +49,4 @@
 			</form>	
 		</div>
 	</div>
-
-</div>
-<footer class="footer">
-	<div class="container">
-		<div class="row">
-			<div class="col-lg-6">
-				<h3 >Information</h3>
-				<a href="aboutus.html">About Us</a><br>
-				<a href="faq.html">FAQ</a><br> 
-				
-			</div>
-			<div class="col-lg-6">
-				<h3>My Account</h3>
-				<a href="login.html">Login</a><br>
-				<a href="signup/">Sign Up</a><br> 
-				
-			</div>
-		</div>
-
-	</div>
-
-</footer>	
-
-
-</body>
-</html>
+{% endblock content %}
