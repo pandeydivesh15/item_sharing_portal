@@ -44,8 +44,7 @@
 			<form>
 			
 			<div class="row">
-			
-			
+					
 			<div class="col-md-4">
 				<td><img height="200px" width="150px" src="../static/images/student_pic.jpg"></img></td>
 				
@@ -88,7 +87,7 @@
 			
 				
 				
-				<input type="text" name="name" value=" Ram Sharma" class="form-control" id="exampleInputText1" readonly>
+				<input type="text" name="name" value="{{ profile_user.name }}" class="form-control" id="exampleInputText1" readonly>
 				
 			</div>	
 			</div>	
@@ -109,7 +108,7 @@
 			</div>
 			<div class="col-md-6">
 			
-			<input type="text" name="Department" value=" Computer Science and Engineering" class="form-control" id="exampleInputText1" readonly >
+			<input type="text" name="Department" value="{{ profile_user.department }}" class="form-control" id="exampleInputText1" readonly >
 			
 			</div>
 			</div>
@@ -131,7 +130,7 @@
 			</div>
 			<div class="col-md-6">
 			
-			<input type="text" name="batch" value=" 2015" class="form-control" id="exampleInputText1" readonly>
+			<input type="text" name="batch" value="{{ profile_user.batch }}" class="form-control" id="exampleInputText1" readonly>
 			
 			</div>
 			</div>
@@ -152,7 +151,7 @@
 			</div>
 			<div class="col-md-6">
 			
-			<input type="text" name="address" value=" 515B, Aryabhatta Hostel, IIT-BHU, Varanasi, U.P." class="form-control" id="exampleInputText1" readonly>
+			<input type="text" name="address" value="{{ profile_user.address  }}" class="form-control" id="exampleInputText1" readonly>
 			
 			</div>
 			</div>
@@ -173,7 +172,7 @@
 			</div>
 			<div class="col-md-6">
 			
-			<input type="text" name="mobile" value=" +919898257543" class="form-control" id="exampleInputText1" readonly>
+			<input type="text" name="mobile" value="{{ profile_user.contact }}" class="form-control" id="exampleInputText1" readonly>
 			
 			</div>
 			</div>
@@ -194,7 +193,7 @@
 			</div>
 			<div class="col-md-6">
 			
-			<input type="email" name="email"  class="form-control" id="exampleInputEmail1" value=" ram.sharma.cse15@iitbhu.ac.in" readonly>
+			<input type="email" name="email"  class="form-control" id="exampleInputEmail1" value="{{ profile_user.user_id }}" readonly>
 			
 			</div>
 			</div>

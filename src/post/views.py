@@ -6,6 +6,25 @@ from django.contrib import messages
 from .models import Post
 from User.models import User, check_if_auth_user
 
+def posts_list(request, querySet_list, context_data = None): # Listing Posts
+	paginator = Paginator(querySet_list, 6) # Show 5 queries per page
+
+	page = request.GET.get('page') #'page' denotes the page number
+	try:
+		querySet = paginator.page(page)
+	except PageNotAnInteger:
+		# If page is not an integer, deliver first page.
+		querySet = paginator.page(1)
+	except EmptyPage:
+		#If page is out of range (e.g. 9999), deliver last page of results.
+		querySet = paginator.page(paginator.num_pages)
+	
+	new_context_data={
+		"all_posts": querySet
+	}
+	new_context_data.update(context_data)
+	return render(request, "postsList.html", new_context_data)
+
 #CRUD implemented here
 def posts_create(request):
 	check = check_if_auth_user(request)

@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block navbar %}
+
+{% endblock navbar %}
+
+
+{% block content %}
+	<div class="container-fluid">
+	<div class="row">
+		<div class="container-fluid searchbox">
+			<div align="center">
+				<form class="navbar-form" role="search" action="/search/" method="get">
+						<div class="input-group">
+						<input type="text" class="form-control input-lg" placeholder="Search" name="search_query">
+						<div class="input-group-btn">
+						<button class="btn btn-default btn-lg" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+						</div>
+						</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+	<div class="col-lg-6 col-lg-offset-3">
+		<div class="panel panel-default">
+			<div class="panel-heading">RESULTS</div>
+			<div class="panel-body">
+				{% if all_posts %}
+				{% for obj in all_posts %}
+					<div class="row">
+					    <div class="thumbnail">
+					      <img src="{{ obj.image.url }}" alt="No image uploaded">
+					      <div class="caption">
+					        <h3 align="center">{{ obj.title }}</h3>
+					        <h4 align="center"><a href="{{ obj.author.get_absolute_url }}">{{ obj.author }}</a> | {{ obj.timestamp|timesince }} ago</h4>
+					        <p align="center"><a href="{{ obj.getAbsoluteURL }}" class="btn btn-primary" role="button">View Post</a></p>
+					      </div>
+					    </div>
+					</div>
+				{% endfor %}
+				{% else %}
+				<div align="center">No search results. Try again with new query</div>
+				{% endif %}	
+			</div>
+		</div>
+	</div>
+	</div>
+	</div>
+</div>
+{% endblock content  %}

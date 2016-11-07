@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from django.contrib import messages
 # Create your views here.
 from .models import User, start_user_session, check_if_auth_user, stop_user_session
+from .mail import mail_send_to
 
 def check_login(request):
 	if check_if_auth_user(request):
@@ -35,8 +36,11 @@ def signup_user(request):
 	name = request.POST.get('userName')
 	email = request.POST.get('userEmail')
 	pwd = request.POST.get('userPasswd')
+	batch = request.POST.get('userBatch')
+	department = request.POST.get('userDepartment')
 	con = request.POST.get('userContact')
 	add = request.POST.get('userAddress')
+
 
 	try:
 		if name and email and pwd and con and add:
@@ -46,12 +50,16 @@ def signup_user(request):
 					name = name,
 					user_id = email,
 					user_pwd = pwd,
+					batch = batch,
+					department = department,
 					contact = con,
 					address = add)
 			usr.save()
 			#ans = User.objects.raw(sql)
 			messages.success(request, "Sign up was successful")
 			messages.success(request, "Now you may login")
+			#Send Welcome mail
+			mail_send_to(usr)
 			return redirect("user:login")
 	except Exception,error:
 		messages.error(request, "Some Internal Error. May be this mail id is already registered.")
@@ -77,10 +85,12 @@ def user_profile(request,id=None):
 	if current_user == other_user:
 		contextData = {
 			"user" : current_user,
+			"profile_user": current_user,
 		}
 	else:
 		contextData = {
 		"user" : current_user,
-		"chat_link_user" : other_user, 
+		"chat_link_user" : other_user,
+		"profile_user": other_user, 
 		}
 	return render(request, "profile.html", contextData)

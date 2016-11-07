@@ -10,6 +10,6 @@ class PostModelAdmin(admin.ModelAdmin):
 	list_display=["author", "title"]
 	list_display_links=["title"]
 	list_filter= ["timestamp"]
-	search_fields =["title","author"]
+	search_fields =["title","author__name"]
 
 admin.site.register(Post, PostModelAdmin)

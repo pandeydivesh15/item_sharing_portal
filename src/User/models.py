@@ -10,6 +10,9 @@ class User(models.Model):
 	name = models.CharField(max_length=30)
 	user_id = models.EmailField(max_length=30,unique=True)
 	user_pwd = models.CharField(max_length=30)
+
+	department = models.CharField(max_length=30)
+	batch = models.CharField(max_length=10)
 	contact = models.IntegerField()
 	address = models.TextField()
 	timestamp = models.DateTimeField(auto_now=False,auto_now_add=True)

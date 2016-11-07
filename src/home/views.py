@@ -4,6 +4,7 @@ from django.contrib import messages
 # Create your views here.
 from User.models import check_if_auth_user
 from post.models import Post
+from post.views import posts_list
 
 def index_page(request):
 	user = check_if_auth_user(request)
@@ -12,3 +13,29 @@ def index_page(request):
 		"all_posts" : Post.objects.all(),
 	}
 	return render(request, "index.html" , context_data)
+
+def query_result(request):
+	check =  check_if_auth_user(request)
+	if not check:
+		messages.error(request,"Perform login first to see any particular posts")
+		return redirect("home:welcome")
+	current_user =  check
+
+	query = request.GET.get("search_query")
+	if not query:
+		messages.error(request, "Enter some query first")
+		return redirect("home:welcome")
+	results = Post.objects.filter(title__icontains=query)
+	results = results | Post.objects.filter(author__name__icontains=query)
+	results = results | Post.objects.filter(description__icontains=query)
+	# sql = """
+	# 		SELECT * FROM post_post 
+	# 		WHERE title LIKE '%s' OR description LIKE '%s' OR price LIKE '%s'
+	# 		""" % (query , query ,query)
+	# results = list(Post.objects.raw(sql))
+	context_data = {
+		"user" : current_user,
+	}
+
+	return posts_list(request, results, context_data)
+
