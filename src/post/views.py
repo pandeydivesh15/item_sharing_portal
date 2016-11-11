@@ -109,8 +109,9 @@ def posts_delete(request, id=None):
 	if not check:
 		messages.error(request, "Perform login first to delete any post")
 		return redirect("home:welcome")
+	current_user = User.objects.filter(user_id = check)[0]
 	instance=get_object_or_404(Post,id=id)
-	if instance.author != check:
+	if instance.author != current_user:
 		messages.error(request, "You can't delete this post.")
 	else:
 		instance=get_object_or_404(Post,id=id)

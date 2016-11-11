@@ -1,0 +1,84 @@
+@font-face {
+    font-family: j;
+    src: url(../fonts/j.otf);
+}
+.im{
+	background-image: url("../static/images/bgprofile.jpg");
+}
+.bottom{
+	background-color:red;
+}
+.page-wrapper{
+	font-family:
+}
+.aboutus{
+	margin-top:50px;
+	line-height:300%;
+	font-family:j;
+	font-size:25px;
+	font-style:italic;
+}
+.parallax { 
+    height: 550px;;
+	width: 100%;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+	position:relative;
+	z-index:1;
+}
+.image1{
+	background-image: url("../images/Background.jpg");
+}
+.image2{
+	background-image: url("../images/gamer.jpg");
+}
+.image3{
+	background-image: url("../images/Photography.jpg");
+}
+.image4{
+	background-image: url("../images/game.jpg");
+}
+.parallax-container {
+  min-height: 609px;
+  line-height: 0;
+  height: 10%;
+  color: rgba(255,255,255,.9);
+  position:relative;
+  z-index:1;
+}
+.parallax-container .section {
+    width: 100%;
+  }
+.text-header{
+	position:relative;
+	z-index:2;
+	top:-120px;
+}
+.darrow{
+position:relative;
+	z-index:2;
+	top:-120px;	
+}
+.image-large{	
+	width:100%;
+	height:100%;
+	margin-top:25px;
+	margin-left:0px;	
+}
+#go-up {
+        position: fixed;
+		right: 3%;
+        bottom: 8%;
+        z-index: 100;
+      }
+#go-home {
+        position: fixed;
+        left: 3%;
+        bottom: 8%;
+        z-index: 100;
+      }
+.mod{
+	text-align:right;
+	}

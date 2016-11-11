@@ -8,9 +8,9 @@
 	
 
  	{% block add_static %}
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="../static/css/bootstrap.min.css">
+	<script src="../static/js/jquery.min.js"></script>
+	<script src="../static/js/bootstrap.min.js"></script>
 
  	<link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css" media="all">
 	{% endblock add_static %}
@@ -33,15 +33,14 @@
 		<div class="row">
 			<div class="col-lg-6">
 				<h3 >Information</h3>
-				<a href="aboutus.html">About Us</a><br>
-				<a href="faq.html">FAQ</a><br> 
+				<a href="/aboutus/">About Us</a><br>
+				<a href="/faq/">FAQ</a><br> 
 				
 			</div>
 			<div class="col-lg-6">
 				<h3>My Account</h3>
-				<a href="login.html">Login</a><br>
-				<a href="signup/">Sign Up</a><br> 
-				
+				<a href="/login">Login</a><br>
+				<a href="/signup/">Sign Up</a><br> 
 			</div>
 		</div>
 

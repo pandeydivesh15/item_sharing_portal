@@ -38,4 +38,7 @@ def query_result(request):
 	}
 
 	return posts_list(request, results, context_data)
-
+def about_us(request):
+        return render(request, "aboutus.html")
+def faq(request):
+        return render(request, "FAQ.html")

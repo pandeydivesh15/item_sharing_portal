@@ -2,9 +2,6 @@ body{
 	padding-top: 0px;
 	background: url("../images/background.gif") repeat;
 }
-a:link{
-	color:#fff;
-}
 .panel{
 	background-color: #D8FBFF;
 }
