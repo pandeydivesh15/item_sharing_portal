@@ -3,6 +3,7 @@ from __future__ import unicode_literals
 from django.db import models
 from django.core.urlresolvers import reverse
 
+
 # Create your models here.
 class Chat(models.Model):
 	auto_id = models.AutoField(primary_key=True)
@@ -13,5 +14,5 @@ class Chat(models.Model):
 
 	def __unicode__(self):
 		return self.message
-	def get_return_url(self):
-		return reverse("chat:chat_start", kwargs={ "id":self.chat_reciever.auto_id})
+	# def get_return_url(self):
+	# 	return reverse("chat:chat_start", kwargs={ "id":self.chat_reciever.auto_id})

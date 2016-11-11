@@ -1,32 +1,94 @@
 {% extends "base.html" %}
 
+{% load staticfiles %}
+
 {% block navbar %}
 		{% include "navbar_after_login.html" %}
 {% endblock navbar %}
 
 {% block content %}
-	{% if other_user %}
-		<h2>{{ other_user.name }} is online.</h2>
+	{% if other_user.is_online %}
+		<h2 align = "center"><a href="{{ other_user.get_absolute_url }}">{{ other_user.name }} </a><span id = "status"> is online.</span></h2>
 	{% else %}
-		<h2>{{ other_user.name }} seems offline. But you may send messages</h2>
+		<h2 align = "center"><a href="{{ other_user.get_absolute_url }}">{{ other_user.name }} </a><span id = "status"> seems offline. But you may send messages.</span></h2>
 	{% endif %}
-	<div class="col-md-6 col-md-offset-3">
-		{% for chat in chatmessage_list %}
-        {% if user.name == chat.chat_sender %}
-			<p style="color:blue;text-align: right;">			            
+	<div class="col-md-8 col-md-offset-2">
+		<div class = "panel panel-default" id="mypanel" style="max-height: 500px;  overflow-y: scroll;">
+		<div class = "panel-body" id = "chatbox">
+			{% for chat in chatmessage_list %}
+        {% if user.user_id == chat.chat_sender %}
+			<p style="color:blue;text-align: right;"><span style="font-size:150%;">{{ chat.message }}</span><span > :You</span>		            
 		{% else %}
-			<p style="color:red;text-align: left;">
+			<p style="color:red;text-align: left;"><span>{{ chat.chat_sender }}</span><span style="font-size:150%;">: {{ chat.message }}</span>
 		{% endif %}
-		<span>{{ chat.chat_sender }}:</span>{{ chat.message }}
-			            <br><span>{{ chat.timestamp|timesince }} ago</span>
+		    <br><span style="font-size: 80%;">{{ chat.timestamp|timesince }} ago</span>
 			</p> 
     	{% endfor %}
-	    <form role="form" action="{{ other_user.auto_id }}/send/" method="post">{% csrf_token %}
+    	</div>
+	    </div>
+	    <form id="chatform" role="form" action="{{ other_user.auto_id }}/send/" method="post">{% csrf_token %}
 	    	<div class="form-group">
-				<input class="form-control FormElement" type="text" name="chat_msg" placeholder="Enter your message here">
+				<input id="message" class="form-control FormElement" type="text" name="chat_msg" placeholder="Enter your message here">
 			</div>
-	    	<button type="submit"></button>
+	    	<button type="submit" hidden></button>
 	    </form>
 	</div>
 
 {% endblock content %}
+{% block afterbody %}
+<script type="text/javascript" src='{% static "js/reconnecting-websocket.min.js" %}'></script>
+<script>
+	var elmnt = document.getElementById("mypanel");
+    var y = elmnt.scrollHeight;
+    $("div").scrollTop(y);   
+    // When we're using HTTPS, use WSS too.
+    other_user_id = {{ other_user.auto_id }}
+    user_id = {{ user.auto_id }}
+    other_user_mail = "{{ other_user.user_id }}"
+    var ws_scheme = window.location.protocol == "https:" ? "wss" : "ws";
+    var chatsock = new ReconnectingWebSocket(ws_scheme + '://' + window.location.host + window.location.pathname + "/" + user_id);
+    
+    chatsock.onmessage = function(message) {
+        var data = JSON.parse(message.data);
+        var chat = $("#chatbox");
+
+        obj = document.getElementById("status");
+        if (data.other_status) {
+        	obj.innerHTML = "is online.";
+        }
+        else{
+        	obj.innerHTML = "seems offline. But you may send messages.";
+        }
+        senderID = data.senderID;
+        if (senderID == user_id){
+        	var ele = $('<p style="color:blue;text-align: right;"></p>');
+        	ele.append(
+            $("<span style='font-size:150%;''></span>").text(data.message))
+            ele.append(
+            $("<span></span>").text(" :You"))
+        }
+        else{
+        	var ele = $('<p style="color:red;text-align: left;"></p>');
+        	ele.append(
+            $("<span></span>").text(other_user_mail+": "))
+            ele.append(
+            $('<span style="font-size:150%;"></span>').text(data.message))
+        }
+        ele.append($("<br>"))       
+        chat.append(ele);
+        var y = elmnt.scrollHeight;
+    	$("div").scrollTop(y);
+    };
+
+    $("#chatform").on("submit", function(event) {
+        var message = {
+            other_user_id : other_user_id, 
+    		user_id : user_id,
+            message: $('#message').val(),
+        }
+        chatsock.send(JSON.stringify(message));
+        $("#message").val('').focus();
+        return false;
+    });
+</script>
+{% endblock afterbody %}

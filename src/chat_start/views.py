@@ -5,29 +5,29 @@ from django.contrib import messages
 from User.models import User, check_if_auth_user
 from .models import Chat
 
-def recv_chat(request, id = None):
-	check = check_if_auth_user(request)
-	if not check:
-		messages.error(request, "Perform login first to start chatting")
-		return redirect("home:welcome")
+# def recv_chat(request, id = None):
+# 	check = check_if_auth_user(request)
+# 	if not check:
+# 		messages.error(request, "Perform login first to start chatting")
+# 		return redirect("home:welcome")
 
-	current_user = User.objects.filter(user_id = check)[0]
-	other_user = get_object_or_404(User, auto_id = id)
-	message = request.POST.get('chat_msg')
+# 	current_user = User.objects.filter(user_id = check)[0]
+# 	other_user = get_object_or_404(User, auto_id = id)
+# 	message = request.POST.get('chat_msg')
 
-	try:
-		if current_user and other_user and message:
-			#sql = """INSERT INTO User_user( name, user_id, user_pwd, contact, address) 
-			#		Values(%s,%s,%s,%s,%s)""" % ( name, email, pwd, con, add)
-			chat = Chat(
-					chat_sender = current_user,
-					chat_reciever = other_user,
-					message = message)
-			chat.save()
-			return redirect(chat.get_return_url())
-	except Exception,error:
-		messages.error(request, "Some Internal Error. Try again")
-	return redirect(chat.get_return_url())
+# 	try:
+# 		if current_user and other_user and message:
+# 			#sql = """INSERT INTO User_user( name, user_id, user_pwd, contact, address) 
+# 			#		Values(%s,%s,%s,%s,%s)""" % ( name, email, pwd, con, add)
+# 			chat = Chat(
+# 					chat_sender = current_user.user_id,
+# 					chat_reciever = other_user.user_id,
+# 					message = message)
+# 			chat.save()
+# 			return redirect(chat.get_return_url())
+# 	except Exception,error:
+# 		messages.error(request, "Some Internal Error. Try again")
+# 	return redirect(chat.get_return_url())
 
 
 def begin_chat(request, id = None):
@@ -42,7 +42,7 @@ def begin_chat(request, id = None):
 			 WHERE chat_sender='{0}' and chat_reciever='{1}'
 			 OR chat_sender='{1}' and chat_reciever='{0}';"""
 
-	chat_list = Chat.objects.raw(sql.format(current_user,other_user))
+	chat_list = Chat.objects.raw(sql.format(current_user.user_id,other_user.user_id))
 	context_data = {
 		"user" : current_user,
 		"other_user" : other_user,

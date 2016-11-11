@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'User',
     'chat_start',
     'post',
-
+    'channels',
 ]
 
 MIDDLEWARE = [
@@ -130,7 +130,18 @@ STATICFILES_DIRS= [
 STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR),"static_cdn")
 MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR),"media_cdn")
 
-#Sending mail
+# Channel seetings
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "asgi_redis.RedisChannelLayer",
+        "CONFIG": {
+            "hosts": [os.environ.get('REDIS_URL', 'redis://localhost:6379')],
+        },
+        "ROUTING": "easy_share_portal.routing.channel_routing",
+    },
+}
+
+# Sending mail
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
