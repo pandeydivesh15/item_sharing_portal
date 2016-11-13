@@ -30,7 +30,7 @@
 		<div class="row">
 		<div class="col-lg-12" align="center">
 			<a href="./posts/create">
-			<button class="btn btn-primary btn-lg"> Want to sell something? Click here. </button></a>
+			<button class="btn btn-primary btn-lg"> Want to Post something? Click here. </button></a>
 		</div>
 		</div>
 	{% endif %}
@@ -51,10 +51,18 @@
 			<div class="panel-body">
 				<div class="row">
 				{% for obj in all_posts %}
+
 					<div class="col-md-6">
-						    <div class="thumbnail">
+						    <div class="thumbnail {{ obj.reason_post }}">
 						      <img src="{{ obj.image.url }}" alt="No image uploaded">
 						      <div class="caption">
+						      {% if obj.reason_post == "lostfound" %}
+					        	<h6 align="center"><u>LOST/FOUND</u></h6>
+					          {% elif obj.reason_post == "sell" %}
+					        	<h6 align="center"><u>For SALE</u></h6>
+					          {% else %}
+					        	<h6 align="center"><u>For SHARING</u></h6>
+					          {% endif %}
 						        <h3 align="center">{{ obj.title }}</h3>
 						        <h4 align="center"><a href="{{ obj.author.get_absolute_url }}">{{ obj.author }}</a> | {{ obj.timestamp|timesince }} ago</h4>
 						        <p align="center"><a href="{{ obj.getAbsoluteURL }}" class="btn btn-primary" role="button">View Post</a></p>

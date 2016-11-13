@@ -12,9 +12,7 @@ def ws_connect(message):
 
     Group('chat-' + session_check).add(message.reply_channel)
     message.channel_session['chat'] = session_check
-    current_user = User.objects.filter(auto_id = int(user))[0]
-    current_user.is_online = True
-    current_user.save()
+    
 
 @channel_session
 def ws_receive(message):
@@ -43,8 +41,5 @@ def ws_disconnect(message):
     current_user = User.objects.filter(auto_id = int(chat_users[0]))[0]
     other_user = User.objects.filter(auto_id = int(chat_users[1]))[0]
     session_check = str(current_user.auto_id) + "-" + str(other_user.auto_id)
-
-    current_user.is_online = False
-    current_user.save()
 
     Group('chat-'+ session_check).discard(message.reply_channel)

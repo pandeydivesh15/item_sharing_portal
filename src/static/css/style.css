@@ -86,8 +86,16 @@ body{
 	
 
 }
-.thumbnail{
+.sell{
 	background: url("../images/postBack.jpg") no-repeat;
+	background-size: 100% 100%;
+}
+.share{
+	background: url("../images/greenback.jpg") no-repeat;
+	background-size: 100% 100%;
+}
+.lostfound{
+	background: url("../images/yellowback.jpg") no-repeat;
 	background-size: 100% 100%;
 }
 .thumbnail img{

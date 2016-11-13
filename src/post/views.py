@@ -40,10 +40,12 @@ def posts_create(request):
 		category = request.POST.get('item_category')
 		image = request.FILES['item_image']	
 		price = request.POST.get('item_price')
-
+		reason_post = request.POST.get('reason_item')
+		
 		new_post = Post(
 					title = title,
 					author = current_user,
+					reason_post = reason_post,
 					description = disc,
 					category = category,
 					image = image,
@@ -95,12 +97,17 @@ def posts_update(request,id=None):
 		category = request.POST.get('item_category')
 		image = request.FILES['item_image']	
 		price = request.POST.get('item_price')
+		reason_post = request.POST.get('reason_item')
+
+		if reason_post == "lostfound":
+			price = 0
 
 		instance.title = title
 		instance.description = disc
 		instance.category = category
 		instance.image = image
 		instance.price = price
+		instance.reason_post = reason_post
 		instance.save()
 		messages.success(request, "Post updated")
 		return redirect(instance.getAbsoluteURL())
@@ -117,7 +124,6 @@ def posts_delete(request, id=None):
 	if instance.author != current_user:
 		messages.error(request, "You can't delete this post.")
 	else:
-		instance=get_object_or_404(Post,id=id)
 		instance.delete()
 		messages.success(request,"Post successfully deleted")
 	return redirect("home:welcome")

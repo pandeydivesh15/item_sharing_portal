@@ -7,7 +7,7 @@
 				<img class="img-responsive" src="../static/images/signUpImage.jpg" alt="Image can't be displayed" >
 			</div>
 			<div class="col-lg-6">
-				<form role="form" action="" method="post">{% csrf_token %}
+				<form role="form" action="" method="post" enctype="multipart/form-data">{% csrf_token %}
 					<div class="form-group">
 						<input class="form-control FormElement" type="text" name="userName" required="True" placeholder="Your Name">
 					</div>
@@ -17,6 +17,15 @@
 					<div class="form-group">
 						<input class="form-control FormElement" type="password" name="userPasswd" required="True" placeholder="Password">
 					</div>
+					<div class="form-group">
+						<div class="panel panel-default">
+							<div class="panel-heading">Upload Your image</div>
+							<div class="col-lg-3"></div>
+							<div class="col-lg-6">			
+								<div class="panel-body"><div><input type="file" class="form-control" name="user_image" required="True"></div></div>
+							</div>
+						</div>
+					</div><br>
 					<div class="form-group" >
 						<input class="form-control FormElement " type="text" name="userDepartment" required="True" placeholder="Department">
 					</div>

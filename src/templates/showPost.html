@@ -7,13 +7,34 @@
 	{% endif %}
 {% endblock navbar %}
 {% block content %}
-<div class="col-sm-6 col-sm-offset-3">
-<h2>{{ post_obj.title }} <small>{{ post_obj.timestamp }}</small></h2><br>
-	{% if post_obj.image %}
-        <img src="{{ post_obj.image.url }}" class="img-responsive">
+<div class="col-md-8 col-md-offset-2">
+    {% if post_obj.author == user %}
+    	<p style="text-align:left;">
+		<a href="edit">Edit your Post</a>
+		<span style="float:right;"><a href="delete">Delete this Post</a></span>
+		</p>
     {% endif %}
-    {{ post_obj.author }}<br>
-	{{ post_obj.description }}<br>
+    <div class="thumbnail {{ post_obj.reason_post }}">
+      <img src="{{ post_obj.image.url }}" alt="No image uploaded">
+      <div class="caption">
+        {% if post_obj.reason_post == "lostfound" %}
+        	<h2 align="center"><u>LOST/FOUND</u></h2>
+        {% elif post_obj.reason_post == "sell" %}
+        	<h2 align="center"><u>For SALE</u></h2>
+        {% else %}
+        	<h2 align="center"><u>For SHARING</u></h2>
+        {% endif %}
+        <h2 align="center">{{ post_obj.title }}</h3>
+        <h3 align="center"><a href="{{ post_obj.author.get_absolute_url }}">{{ post_obj.author }}</a> | {{ post_obj.timestamp }}</h4>
+        <div class="row"><div class="col-md-6 col-md-offset-3">
+        	{{ post_obj.description|linebreaks }}   
+        </div></div>
+        {% if post_obj.reason_post != "lostfound" %}
+        	<h2 align="center">Price: {{ post_obj.price }}</h2>
+        {%  endif %}
+
+      </div>
+    </div>
 </div>
 {% endblock content %}
 	

@@ -18,6 +18,17 @@
 				<div class="form-group">
 					Title: <input class="form-control FormElement" type="text" name="item_title" required="True" value="{{ post_obj.title }}">
 				</div>
+				<div class="form-group" align="center">
+					<div class="radio">
+					  <label><input type="radio" name="reason_item" value="share">Share Item</label>
+					</div>
+					<div class="radio">
+					  <label><input type="radio" name="reason_item" value="sell">Sell Item</label>
+					</div>
+					<div class="radio">
+					  <label><input type="radio" name="reason_item" value="lostfound">Lost/Found Item</label>
+					</div>
+				</div>
 				<div class="form-group">
 					Description: <textarea class="form-control FormElement" name="item_disc" required="True" rows="6">{{ post_obj.description }}</textarea>
 				</div>

@@ -18,6 +18,17 @@
 				<div class="form-group">
 					<input class="form-control FormElement" type="text" name="item_title" required="True" placeholder="What is this post about or What do you wish to sell?">
 				</div>
+				<div class="form-group" align="center">
+					<div class="radio">
+					  <label><input type="radio" name="reason_item" value="share">Share Item</label>
+					</div>
+					<div class="radio">
+					  <label><input type="radio" name="reason_item" value="sell">Sell Item</label>
+					</div>
+					<div class="radio">
+					  <label><input type="radio" name="reason_item" value="lostfound">Lost/Found Item</label>
+					</div>
+				</div>
 				<div class="form-group">
 					<textarea class="form-control FormElement" name="item_disc" required="True" placeholder="Describe your post" rows="6"></textarea>
 				</div>
@@ -42,10 +53,11 @@
 				<div class="form-group">
 					<input class="form-control FormElement" type="number" name="item_price" required="True" placeholder="Enter Price">
 				</div>
+				<p style="font-size:70%" align="center">Note: Enter 0 or any number in price tag, in case of LOST/FOUND case.</p>
 				<div class="buttonAlign">
 					<button type="submit" class="btn btn-primary btn-lg btn-block">Submit</button>
 				</div>
-			</form>	
-		</div>
+			</form>
+			</div>
 	</div>
 {% endblock content %}

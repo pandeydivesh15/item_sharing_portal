@@ -29,9 +29,16 @@
 				{% if all_posts %}
 				{% for obj in all_posts %}
 					<div class="row">
-					    <div class="thumbnail">
+					    <div class="thumbnail {{ obj.reason_post }}">
 					      <img src="{{ obj.image.url }}" alt="No image uploaded">
 					      <div class="caption">
+					      	  {% if obj.reason_post == "lostfound" %}
+					        	<h6 align="center"><u>LOST/FOUND</u></h6>
+					          {% elif obj.reason_post == "sell" %}
+					        	<h6 align="center"><u>For SALE</u></h6>
+					          {% else %}
+					        	<h6 align="center"><u>For SHARING</u></h6>
+					          {% endif %}
 					        <h3 align="center">{{ obj.title }}</h3>
 					        <h4 align="center"><a href="{{ obj.author.get_absolute_url }}">{{ obj.author }}</a> | {{ obj.timestamp|timesince }} ago</h4>
 					        <p align="center"><a href="{{ obj.getAbsoluteURL }}" class="btn btn-primary" role="button">View Post</a></p>

@@ -1,6 +1,8 @@
 from __future__ import unicode_literals
 from django.db import models
 from django.core.urlresolvers import reverse
+from django.dispatch import receiver
+from django.db.models.signals import pre_delete
 
 from User.models import User
 import os
@@ -22,6 +24,7 @@ class Post(models.Model):
 	width_field = models.IntegerField(default = 0)
 	height_field = models.IntegerField(default = 0)
 
+	reason_post = models.CharField(max_length = 10)
 	description = models.TextField()
 	category = models.CharField(max_length = 100)
 	price = models.PositiveIntegerField(default = 0)
@@ -38,3 +41,8 @@ class Post(models.Model):
 
 	class Meta:
 		ordering = [ "-timestamp", "-updated" ] 
+
+@receiver(pre_delete, sender=Post)
+def user_image_delete(sender, instance, **kwargs):
+    # Pass false so FileField doesn't save the model.
+    instance.image.delete(False)

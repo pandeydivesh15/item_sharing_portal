@@ -1,0 +1,110 @@
+body{
+	padding-top: 0px;
+	background: url("../images/background.gif") repeat;
+}
+.panel{
+	background-color: #D8FBFF;
+}
+
+.navbar .main_image{
+	background: url("../images/headingBack.jpg") repeat;
+    padding-top: 175px;    
+}
+
+#wrap{
+	position: absolute;
+	top: 80px;
+	left: 50%;
+	transform: translate(-50%, -50%);
+
+}
+#wrap >img{
+	max-width: 100px;
+	max-height: 100px;
+}
+
+.navbar .main_image .heading{
+	position: absolute;
+	top: 140px; 
+ 	text-align: center;
+    font-size: 20px;
+    color: #fff;
+	width: 100%;
+	line-height: 0.8;
+    
+}
+.navbar .container-fluid{
+	background: url("../images/textHeaderBack.jpg") repeat;;
+}
+.container-fluid .row .panel .panel-body{
+	text-align: left;
+}
+.container-fluid .row .panel-default .panel-heading{
+	text-align: center;
+	background: url("../images/textHeaderBack.jpg") repeat;;
+	color: #fff;
+}
+.container-fluid .row{
+	margin-top: 50px;
+	margin-bottom: 50px;
+}
+.recentPosts {
+	margin-top: 10px;
+}
+#recentPosts-heading{
+	background-color: #FF4040;
+	text-align: left;
+}
+.footer{
+	color: #fff;
+	margin-top: 30px;
+	margin-bottom: 0px;
+	background: url("../images/textHeaderBack.jpg") repeat;
+}
+
+/* signup Form */
+.siteForm > h2{
+	text-align: center;
+	font-weight: bold;
+	padding-bottom: 20px;
+
+}
+.FormElement:hover{
+	background-color: #D5EEFA; 
+}
+.siteForm .buttonAlign >button{
+	text-align: center;
+	background: url("../images/textHeaderBack.jpg") repeat;
+}
+
+.form-group .panel{
+	text-align: center;
+
+}
+.form-group .panel .panel-body{
+	align-self: center;
+	
+
+}
+.thumbnail .sell{
+	background: url("../images/postBack.jpg") no-repeat;
+	background-size: 100% 100%;
+}
+.thumbnail .share{
+	background: url("../images/greenback.jpg") no-repeat;
+	background-size: 100% 100%;
+}
+.thumbnail .lostfound{
+	background: url("../images/yellowback.jpg") no-repeat;
+	background-size: 100% 100%;
+}
+.thumbnail img{
+	width: 400px;
+	height: 200px;	
+}
+@media (max-width: 500px){
+	.navbar .main_image .heading{
+		font-size: 15px;
+	}
+} 
+
