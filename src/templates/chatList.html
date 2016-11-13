@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block navbar %}
+
+{% endblock navbar %}
+
+{% block content %}
+	<div class="container-fluid">
+	<div class="row">
+	<div class="col-lg-6 col-lg-offset-3">
+		<div class="panel panel-default">
+			<div class="panel-heading">Chat User List</div>
+			<div class="panel-body" style="height: 400px;  overflow-y: scroll;">
+				{% for key,value in chatList.iteritems %}
+					<div class="row">
+					    <div class="thumbnail">
+					         <div class="caption">
+					        <h4><span style="font-size: 150%"><a href="{{ key.get_absolute_url }}">{{ key.name }}</a><br></span><span style="font-size: 60%">Chat Count: {{ value }}</span></h4>
+					        </div><a href="/chat/{{ key.auto_id }}"><button class="btn btn-primary btn-lg btn-block">See Chat</button></a>
+					    </div>
+					</div>
+				{% endfor %}	
+			</div>
+		</div>
+	</div>
+	</div>
+	</div>
+</div>
+{% endblock content  %}

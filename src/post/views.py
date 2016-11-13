@@ -5,6 +5,7 @@ from django.contrib import messages
 # Create your views here.
 from .models import Post
 from User.models import User, check_if_auth_user
+import home.views
 
 def posts_list(request, querySet_list, context_data = None): # Listing Posts
 	paginator = Paginator(querySet_list, 6) # Show 5 queries per page
@@ -53,8 +54,9 @@ def posts_create(request):
 
 	contextData={
 			"user" : current_user,
+			"category" : home.views.CATEGORIES,
 	}
-	return render(request,"createPost.html")
+	return render(request,"createPost.html",contextData)
 
 def posts_detail(request,id=None):
 	instance=get_object_or_404(Post,id=id)
@@ -85,6 +87,7 @@ def posts_update(request,id=None):
 	contextData={
 		"user" : current_user,
 		"post_obj": instance,
+		"category" : home.views.CATEGORIES,
 	}
 	if request.method == "POST":
 		title = request.POST.get('item_title')

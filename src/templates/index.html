@@ -38,18 +38,10 @@
 	<div class="col-lg-3">
 		<div class="panel panel-default">
 			<div class="panel-heading">ALL CATEGORIES</div>
-			<div class="panel-body">
-				<p>Lorem ipsum dolor sit amet
-				<p>Ad dolore dignissimos asperiores dicta facere</p>
-				<p>Tenetur quod quidem in voluptatem</p>
-				<p>Consequatdelectus ducimus necessitatibus reiciendis optio tempora unde earum doloremque commodi laudantium ad nulla vel odio?</p>
-				<p>Lorem ipsum dolor sit amet
-				<p>Ad dolore dignissimos asperiores dicta facere</p>
-				<p>Tenetur quod quidem in voluptatem</p>
-				<p>Consequatdelectus ducimus necessitatibus reiciendis optio tempora unde earum doloremque commodi laudantium ad nulla vel odio?</p><p>Lorem ipsum dolor sit amet
-				<p>Ad dolore dignissimos asperiores dicta facere</p>
-				<p>Tenetur quod quidem in voluptatem</p>
-				<p>Consequatdelectus ducimus necessitatibus reiciendis optio tempora unde earum doloremque commodi laudantium ad nulla vel odio?</p>
+			<div class="panel-body" style="font-size: 150%;">
+				{% for key,value in category.iteritems %}
+					<a href="/category/{{ key }}"><p>{{ value }}</p></a>					
+				{% endfor %}
 			</div>
 		</div>
 	</div>

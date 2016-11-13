@@ -24,10 +24,9 @@
 				<div class="form-group" style="text-align:center;">
 				 <label for="category">Choose category</label>
 				  <select class="form-control" id="category" name="item_category">
-				    <option>Cate 1</option>
-				    <option>Cate 2</option>
-				    <option>Cate 3</option>
-				    <option>Cate 4</option>
+				    {% for key,value in category.iteritems %}
+					<option>{{ value }}</option>					
+					{% endfor %}
 				  </select>
 					<!--<input class="form-control FormElement" type="text" name="item_category" required="True" placeholder="Choose your category"><-->
 				</div>

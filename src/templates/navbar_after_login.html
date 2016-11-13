@@ -17,6 +17,9 @@
 	    	</div>
 	    	<div class="collapse navbar-collapse" id="cNav">
 	    	<ul class="nav navbar-nav navbar-right">
+				{% if user %}
+					<li><a href="/seechats/"><span class="glyphicon glyphicon-envelope"></span> See Messages</a></li></li>
+				{% endif %}    	
 	    	    <li><a href="/logout/"><span class="glyphicon glyphicon-log-in"></span> LogOut</a></li></li>
 	    	    <li><a href="/faq/"><span class="glyphicon glyphicon-info-sign"></span>  
 	    	     FAQ</a></li>
