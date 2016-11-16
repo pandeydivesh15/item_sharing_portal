@@ -10,6 +10,7 @@ from User.models import User, check_if_auth_user
 from post.models import Post
 from post.views import posts_list
 from chat_start.models import Chat
+from .models import feedback_data
 
 CATEGORIES = {
 		1: "Academic books",
@@ -70,10 +71,28 @@ def query_result(request):
 	return posts_list(request, results, context_data)
 def about_us(request):
         return render(request, "aboutus.html")
+def feedback(request):
+	if request.method == "POST":
+		feedback=feedback_data(improvements=request.POST.get('improvements'),complain=request.POST.get('complaint'))
+		feedback.save()		
+		messages.success(request, "FeedBack Submitted")
+		return redirect("home:welcome")
+	else:
+		check =  check_if_auth_user(request)
+		current_user = None
+		if check:
+			current_user = User.objects.filter(user_id = check)[0]
+		context_data = {
+			"user" : current_user,
+		}	
+		return render(request,"feedback.html",context_data)
 def faq(request):
 	check =  check_if_auth_user(request)
+	current_user = None
+	if check:
+		current_user = User.objects.filter(user_id = check)[0]
 	context_data = {
-		"user" : check,
+		"user" : current_user,
 	}
 	return render(request, "FAQ.html",context_data)
 
